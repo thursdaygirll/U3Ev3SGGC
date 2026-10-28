@@ -1,6 +1,7 @@
 const express = require('express');
 const productsRouter = require('./routes/products');
 const inventoryRouter = require('./routes/inventory');
+const compositeRouter = require('./routes/composite');
 
 function createApp() {
   const app = express();
@@ -10,7 +11,7 @@ function createApp() {
 
   app.use('/microservices/products', productsRouter);
   app.use('/microservices/inventory', inventoryRouter);
-  // Aquí se registra la API compuesta.
+  app.use('/api/v1/product-summary', compositeRouter);
 
   app.use((req, res) => {
     res.status(404).json({ status: 'ERROR', message: 'Ruta no encontrada' });
