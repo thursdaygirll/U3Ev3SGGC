@@ -8,7 +8,7 @@ module.exports = {
   // se comporten como servicios independientes.
   servicesBaseUrl: process.env.SERVICES_BASE_URL || `http://localhost:${port}`,
   // API externa de tipo de cambio (Frankfurter). Configurable para pruebas.
-  exchangeApiUrl: process.env.EXCHANGE_API_URL || 'https://api.frankfurter.app',
+  exchangeApiUrl: process.env.EXCHANGE_API_URL || 'https://api.frankfurter.dev/v1',
   exchangeSourceName: 'Frankfurter External API',
   baseCurrency: 'USD',
   targetCurrency: 'MXN',

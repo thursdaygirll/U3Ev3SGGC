@@ -6,7 +6,7 @@ const SERVICE = 'Divisas (Frankfurter)';
 /**
  * Microservicio 3 - API externa de terceros.
  * Consulta el tipo de cambio USD -> MXN en Frankfurter:
- *   GET https://api.frankfurter.app/latest?from=USD&to=MXN
+ *   GET https://api.frankfurter.dev/v1/latest?from=USD&to=MXN
  *   -> { "amount": 1, "base": "USD", "date": "2026-10-28", "rates": { "MXN": 18.5 } }
  *
  * Devuelve un objeto ya transformado: { rate, date, source }.
