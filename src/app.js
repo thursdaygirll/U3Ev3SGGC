@@ -1,4 +1,5 @@
 const express = require('express');
+const productsRouter = require('./routes/products');
 
 function createApp() {
   const app = express();
@@ -6,7 +7,8 @@ function createApp() {
 
   app.get('/health', (req, res) => res.json({ status: 'UP' }));
 
-  // Aquí se registran las rutas de cada microservicio y de la API compuesta.
+  app.use('/microservices/products', productsRouter);
+  // Aquí se registran las demás rutas (inventario y API compuesta).
 
   app.use((req, res) => {
     res.status(404).json({ status: 'ERROR', message: 'Ruta no encontrada' });
