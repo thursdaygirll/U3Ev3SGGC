@@ -17,6 +17,13 @@ function createApp() {
     res.status(404).json({ status: 'ERROR', message: 'Ruta no encontrada' });
   });
 
+  // Manejador global de errores inesperados.
+  // eslint-disable-next-line no-unused-vars
+  app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({ status: 'ERROR', message: 'Error interno del servidor' });
+  });
+
   return app;
 }
 

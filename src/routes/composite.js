@@ -7,17 +7,23 @@ const { buildSummary } = require('../composite/buildSummary');
 const router = Router();
 
 // Composite API: GET /api/v1/product-summary/:id
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res, next) => {
   const { id } = req.params;
 
-  // Las 3 peticiones se lanzan en paralelo (una sola espera de red).
-  const [product, inventory, exchange] = await Promise.all([
-    getProduct(id),
-    getInventory(id),
-    getExchangeRate(),
-  ]);
+  try {
+    // Las 3 peticiones se lanzan en paralelo. allSettled espera a todas y
+    // NO falla si una se rechaza: cada resultado trae su estado.
+    const results = await Promise.allSettled([
+      getProduct(id),
+      getInventory(id),
+      getExchangeRate(),
+    ]);
 
-  res.json(buildSummary(product, inventory, exchange));
+    const { httpStatus, body } = buildSummary(id, results);
+    res.status(httpStatus).json(body);
+  } catch (err) {
+    next(err); // error inesperado -> manejador global
+  }
 });
 
 module.exports = router;
