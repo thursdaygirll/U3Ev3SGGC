@@ -9,7 +9,7 @@ Cliente ──► GET /api/v1/product-summary/{id}
                  │
                  ├──► GET /microservices/products/{id}     (propio - Catálogo)
                  ├──► GET /microservices/inventory/{id}    (propio - Inventario)
-                 └──► GET https://api.frankfurter.app/latest?from=USD&to=MXN  (terceros - Divisas)
+                 └──► GET https://api.frankfurter.dev/v1/latest?from=USD&to=MXN  (terceros - Divisas)
 ```
 
 ## Requisitos
@@ -39,7 +39,7 @@ EXCHANGE_API_URL=http://localhost:4000 npm start      # terminal 2
 |---|---|---|
 | Catálogo | Propio | `GET /microservices/products/{id}` |
 | Inventario | Propio | `GET /microservices/inventory/{productId}` |
-| Divisas | Terceros (Frankfurter) | `GET https://api.frankfurter.app/latest?from=USD&to=MXN` |
+| Divisas | Terceros (Frankfurter) | `GET https://api.frankfurter.dev/v1/latest?from=USD&to=MXN` |
 | **Composite API** | Propio | `GET /api/v1/product-summary/{id}` |
 
 Productos de ejemplo: `P-101` (con stock), `P-102` (sin stock), `P-103` (poco stock).
