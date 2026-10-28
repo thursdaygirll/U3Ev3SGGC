@@ -1,0 +1,80 @@
+{
+  "info": {
+    "name": "E-Commerce Gateway - Composite API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Microservicio Catálogo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/microservices/products/P-101"
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "2. Microservicio Inventario",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/microservices/inventory/P-101"
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "3. API externa Frankfurter",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.frankfurter.app/latest?from=USD&to=MXN"
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "4. Composite API - éxito",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/product-summary/P-101"
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "5. Composite API - sin stock",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/product-summary/P-102"
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "6. Composite API - 404",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/product-summary/NOPE"
+        },
+        "description": ""
+      }
+    }
+  ]
+}
