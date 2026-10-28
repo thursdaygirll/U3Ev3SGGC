@@ -1,0 +1,20 @@
+### Variables
+@baseUrl = http://localhost:3000
+
+### 1. Microservicio Catálogo
+GET {{baseUrl}}/microservices/products/P-101
+
+### 2. Microservicio Inventario
+GET {{baseUrl}}/microservices/inventory/P-101
+
+### 3. API externa (Frankfurter)
+GET https://api.frankfurter.app/latest?from=USD&to=MXN
+
+### 4. Composite API - éxito
+GET {{baseUrl}}/api/v1/product-summary/P-101
+
+### 5. Composite API - sin stock
+GET {{baseUrl}}/api/v1/product-summary/P-102
+
+### 6. Composite API - producto inexistente (404)
+GET {{baseUrl}}/api/v1/product-summary/NOPE
